@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Exiled.API.Features;
 using HarmonyLib;
 using NetworkManagerUtils.Dummies;
 using RemoteAdmin;
@@ -10,10 +9,16 @@ using RemoteAdmin.Communication;
 
 namespace RaCustomMenu.Patchs;
 
-[HarmonyPatch(typeof(RaDummyActions), nameof(RaDummyActions.ReceiveData), new Type[]{typeof(CommandSender), typeof(string)})]
+[HarmonyPatch(typeof(RaDummyActions), nameof(RaDummyActions.ReceiveData), new Type[] { typeof(CommandSender), typeof(string) })]
 public static class ReceiveDataPatch
 {
-    [HarmonyPatch,HarmonyPrefix]
+    private static readonly AccessTools.FieldRef<RaDummyActions, uint> SenderNetIdRef =
+        AccessTools.FieldRefAccess<RaDummyActions, uint>("_senderNetId");
+
+    private static readonly AccessTools.FieldRef<RaClientDataRequest, StringBuilder> StringBuilderRef =
+        AccessTools.FieldRefAccess<RaClientDataRequest, StringBuilder>("_stringBuilder");
+
+    [HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, CommandSender sender, string data)
     {
         if (sender is not PlayerCommandSender playerCommandSender)
@@ -23,20 +28,14 @@ public static class ReceiveDataPatch
 
         bool shouldCallOriginal = false;
         uint senderNetId = playerCommandSender.ReferenceHub.netId;
-        var field = __instance.GetType().GetField("_senderNetId", BindingFlags.NonPublic | BindingFlags.Instance);
-        if (field == null)
-        {
-            Log.Error("Champ privé '_senderNetId' introuvable dans " + __instance.GetType());
-        }
-        else
-        {
-            field.SetValue(__instance, senderNetId);
-        }
+
+        SenderNetIdRef(__instance) = senderNetId;
 
         foreach (ReferenceHub referenceHub in ReferenceHub.AllHubs)
         {
-            if(referenceHub.IsHost)
+            if (referenceHub.IsHost)
                 continue;
+
             HashSet<uint> orAddNew = RaDummyActions.NonDirtyReceivers.GetOrAddNew(referenceHub.netId);
             if (DummyActionCollector.IsDirty(referenceHub))
             {
@@ -53,15 +52,16 @@ public static class ReceiveDataPatch
         {
             CallBaseReceiveData(__instance, sender);
         }
+
         return false;
     }
-    
+
     public static void CallBaseReceiveData(RaClientDataRequest target, CommandSender sender)
     {
         var sb = new StringBuilder();
         sb.Append("$").Append(target.DataId).Append(" ");
-        var field = typeof(RaClientDataRequest).GetField("_stringBuilder", BindingFlags.Instance | BindingFlags.NonPublic);
-        field?.SetValue(target, sb);
+
+        StringBuilderRef(target) = sb;
 
         target.GetType().BaseType
             .GetMethod("GatherData", BindingFlags.Instance | BindingFlags.NonPublic)

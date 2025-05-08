@@ -1,4 +1,4 @@
-using System.Reflection;
+using System;
 using HarmonyLib;
 using RemoteAdmin.Communication;
 
@@ -7,16 +7,20 @@ namespace RaCustomMenu.Patchs;
 [HarmonyPatch(typeof(RaDummyActions), nameof(RaDummyActions.GatherData))]
 public static class PatchGatherData
 {
+    private static readonly Action<RaDummyActions, ReferenceHub> AppendDummyDelegate =
+        AccessTools.MethodDelegate<Action<RaDummyActions, ReferenceHub>>(
+            AccessTools.Method(typeof(RaDummyActions), "AppendDummy"));
+
     [HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance)
     {
         foreach (ReferenceHub referenceHub in ReferenceHub.AllHubs)
         {
-            if(referenceHub.IsHost)
+            if (referenceHub.IsHost)
                 continue;
-            MethodInfo method = typeof(RaDummyActions).GetMethod("AppendDummy", BindingFlags.NonPublic | BindingFlags.Instance);
-            method.Invoke(__instance, new object[] { referenceHub });
+            AppendDummyDelegate(__instance, referenceHub);
         }
+
         return false;
     }
 }
