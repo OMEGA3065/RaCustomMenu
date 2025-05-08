@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Exiled.Events.EventArgs.Player;
-using GameCore;
 using NetworkManagerUtils.Dummies;
 using Log = Exiled.API.Features.Log;
 

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 using HarmonyLib;
 using NetworkManagerUtils.Dummies;
@@ -17,6 +16,10 @@ public static class ReceiveDataPatch
 
     private static readonly AccessTools.FieldRef<RaClientDataRequest, StringBuilder> StringBuilderRef =
         AccessTools.FieldRefAccess<RaClientDataRequest, StringBuilder>("_stringBuilder");
+    
+    private static readonly Action<RaClientDataRequest> GatherDataDelegate =
+        AccessTools.MethodDelegate<Action<RaClientDataRequest>>(
+            AccessTools.Method(typeof(RaClientDataRequest).BaseType, "GatherData"));
 
     [HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, CommandSender sender, string data)
@@ -63,9 +66,7 @@ public static class ReceiveDataPatch
 
         StringBuilderRef(target) = sb;
 
-        target.GetType().BaseType
-            .GetMethod("GatherData", BindingFlags.Instance | BindingFlags.NonPublic)
-            ?.Invoke(target, null);
+        GatherDataDelegate(target);
 
         sender.RaReply($"${target.DataId} {sb}", true, false, string.Empty);
     }
