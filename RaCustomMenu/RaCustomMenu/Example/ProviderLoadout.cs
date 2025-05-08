@@ -7,7 +7,10 @@ namespace RaCustomMenu.Example;
 
 public class ProviderLoadout: Provider
 {
-    public override string CategoryName { get; set; } = "Loadout";
+    public override string CategoryName { get; } = "Loadout";
+
+    public override bool IsDirty { get; } = true;
+
     public override List<DummyAction> AddAction(ReferenceHub hub)
     {
         return new List<DummyAction>()

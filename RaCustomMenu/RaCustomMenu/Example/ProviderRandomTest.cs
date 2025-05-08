@@ -8,7 +8,9 @@ namespace RaCustomMenu.Example;
 public class ProviderRandomTest: Provider
 {
     private int num = 0;
-    
+
+    public override bool IsDirty { get;} = true;
+
     public override List<DummyAction> AddAction(ReferenceHub hub)
     {
         return new List<DummyAction>()
@@ -24,5 +26,5 @@ public class ProviderRandomTest: Provider
         };
     }
 
-    public override string CategoryName { get; set; } = "Test Module";
+    public override string CategoryName { get; } = "Test Module";
 }

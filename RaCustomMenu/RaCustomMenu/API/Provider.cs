@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Exiled.API.Features;
 using NetworkManagerUtils.Dummies;
@@ -9,9 +8,11 @@ namespace RaCustomMenu.API;
 
 public abstract class Provider
 {
-    private static readonly List<Provider> ProvidersLoaded = new List<Provider>();
+    public static readonly List<Provider> providersLoaded = new List<Provider>();
     
-    public abstract string CategoryName { get; set; }
+    public abstract string CategoryName { get; }
+    
+    public abstract bool IsDirty { get; }
     
     public abstract List<DummyAction> AddAction(ReferenceHub hub);
 
@@ -55,11 +56,9 @@ public abstract class Provider
     {
         if(provider == null)
             return;
-        ProvidersLoaded.Add(provider);
+        providersLoaded.Add(provider);
         provider.OnRegistered();
     }
-
-    public static List<Provider> GetAllProviders() => ProvidersLoaded.ToList();
     
     protected virtual void OnRegistered(){}
 }

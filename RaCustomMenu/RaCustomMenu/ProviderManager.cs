@@ -8,7 +8,7 @@ namespace RaCustomMenu;
 
 public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
 {
-    private List<Provider> Allproviders = Provider.GetAllProviders();
+    private List<Provider> Allproviders = Provider.providersLoaded;
     
     public void PopulateDummyActions(Action<DummyAction> actionAdder, Action<string> categoryAdder)
     {
@@ -22,8 +22,8 @@ public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
                 Log.Debug("Action name : "+dummyAction.Name);
                 actionAdder(dummyAction);
             }
+            DummyActionsDirty = provider.IsDirty;
         }
-        DummyActionsDirty = true;
     }
 
     public bool DummyActionsDirty { get; set; }

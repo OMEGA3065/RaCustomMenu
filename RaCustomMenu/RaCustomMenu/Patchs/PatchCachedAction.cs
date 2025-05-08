@@ -8,7 +8,7 @@ namespace RaCustomMenu.Patchs;
 
 [HarmonyPatch(typeof(DummyActionCollector.CachedActions), MethodType.Constructor, new Type[]{typeof(ReferenceHub)})]
 public static class PatchCachedAction
-{
+{ 
     [HarmonyPatch, HarmonyPostfix]
     public static void Postfix(DummyActionCollector.CachedActions __instance, ReferenceHub hub)
     {
@@ -19,7 +19,7 @@ public static class PatchCachedAction
             var newProviders = new List<IRootDummyActionProvider>();
             
             newProviders.Add(new ProviderManager(hub));
-        
+            
             field.SetValue(__instance, newProviders.ToArray());
         }
     }
