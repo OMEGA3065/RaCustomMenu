@@ -7,7 +7,7 @@ using NetworkManagerUtils.Dummies;
 using RemoteAdmin.Communication;
 using Utils;
 
-namespace RaCustomMenu.Patchs;
+namespace RaCustomMenuLabApi.Patchs;
 
 [HarmonyPatch(typeof(ActionDummyCommand), nameof(ActionDummyCommand.Execute))]
 public static class PatchActionDummyExecute

@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Exiled.API.Features;
 using NetworkManagerUtils.Dummies;
-using RaCustomMenu.API;
+using RaCustomMenuLabApi.API;
 
-namespace RaCustomMenu;
+namespace RaCustomMenuLabApi;
 
 public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
 {
@@ -15,11 +14,11 @@ public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
         foreach (Provider provider in Allproviders)
         {
             categoryAdder(provider.CategoryName);
-            Log.Debug($"Provider Category name {provider.CategoryName} added");
+            //Log.Debug($"Provider Category name {provider.CategoryName} added");
             List<DummyAction> actions = provider.AddAction(hub);
             foreach (DummyAction dummyAction in actions)
             {
-                Log.Debug("Action name : "+dummyAction.Name);
+                //Log.Debug("Action name : "+dummyAction.Name);
                 actionAdder(dummyAction);
             }
             DummyActionsDirty = provider.IsDirty;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using HarmonyLib;
 using NetworkManagerUtils.Dummies;
 
-namespace RaCustomMenu.Patchs;
+namespace RaCustomMenuLabApi.Patchs;
 
 [HarmonyPatch(typeof(DummyActionCollector.CachedActions), MethodType.Constructor, new Type[]{typeof(ReferenceHub)})]
 public static class PatchCachedAction

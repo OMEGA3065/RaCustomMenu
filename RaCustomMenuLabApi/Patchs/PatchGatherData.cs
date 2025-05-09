@@ -2,7 +2,7 @@ using System;
 using HarmonyLib;
 using RemoteAdmin.Communication;
 
-namespace RaCustomMenu.Patchs;
+namespace RaCustomMenuLabApi.Patchs;
 
 [HarmonyPatch(typeof(RaDummyActions), nameof(RaDummyActions.GatherData))]
 public static class PatchGatherData

@@ -2,7 +2,7 @@ using System;
 using HarmonyLib;
 using NetworkManagerUtils.Dummies;
 
-namespace RaCustomMenu.Patchs;
+namespace RaCustomMenuLabApi.Patchs;
 
 [HarmonyPatch(typeof(DummyActionCollector), nameof(DummyActionCollector.GetCache))]
 public static class PatchGetCache

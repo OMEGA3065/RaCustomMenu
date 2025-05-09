@@ -1,8 +1,6 @@
-using Exiled.API.Interfaces;
+namespace RaCustomMenuLabApi;
 
-namespace RaCustomMenu;
-
-public class Config : IConfig
+public class Config
 {
     public bool IsEnabled { get; set; } = true;
 

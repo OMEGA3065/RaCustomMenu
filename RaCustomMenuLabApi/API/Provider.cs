@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Exiled.API.Features;
+using LabApi.Features.Console;
 using NetworkManagerUtils.Dummies;
 
-namespace RaCustomMenu.API;
+namespace RaCustomMenuLabApi.API;
 
 public abstract class Provider
 {
@@ -34,7 +34,7 @@ public abstract class Provider
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"Erreur lors de l'instanciation de {type.Name} : {ex}");
+                    Logger.Error($"Erreur lors de l'instanciation de {type.Name} : {ex}");
                 }
             }
         }
@@ -47,7 +47,7 @@ public abstract class Provider
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                Logger.Error(ex);
             }
         }
     }

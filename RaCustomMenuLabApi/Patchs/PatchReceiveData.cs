@@ -6,7 +6,7 @@ using NetworkManagerUtils.Dummies;
 using RemoteAdmin;
 using RemoteAdmin.Communication;
 
-namespace RaCustomMenu.Patchs;
+namespace RaCustomMenuLabApi.Patchs;
 
 [HarmonyPatch(typeof(RaDummyActions), nameof(RaDummyActions.ReceiveData), new Type[] { typeof(CommandSender), typeof(string) })]
 public static class ReceiveDataPatch

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Exiled.API.Features;
+using LabApi.Features.Wrappers;
 using NetworkManagerUtils.Dummies;
-using RaCustomMenu.API;
+using RaCustomMenuLabApi.API;
 
-namespace RaCustomMenu.Example;
+namespace RaCustomMenuLabApi.Example;
 
 public class ProviderLoadout: Provider
 {
@@ -18,8 +18,8 @@ public class ProviderLoadout: Provider
             new DummyAction("Give Loadout", () =>
             {
                 Player pl = Player.Get(hub);
-                pl.AddItem(ItemType.Adrenaline);
                 pl.AddItem(ItemType.GunFRMG0);
+                pl.AddItem(ItemType.Adrenaline);
             })
         };
     }

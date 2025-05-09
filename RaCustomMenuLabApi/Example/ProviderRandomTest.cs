@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Exiled.API.Features;
+using LabApi.Features.Console;
 using NetworkManagerUtils.Dummies;
-using RaCustomMenu.API;
+using RaCustomMenuLabApi.API;
 
-namespace RaCustomMenu.Example;
+namespace RaCustomMenuLabApi.Example;
 
 public class ProviderRandomTest: Provider
 {
@@ -17,7 +17,7 @@ public class ProviderRandomTest: Provider
         {
             new DummyAction("Test", () =>
             {
-                Log.Info($"Test {hub.nicknameSync.DisplayName}");
+                Logger.Info($"Test {hub.nicknameSync.DisplayName}");
             }),
             new DummyAction($"Test {num}", () =>
             {

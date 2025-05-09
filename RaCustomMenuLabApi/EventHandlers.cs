@@ -1,33 +1,34 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Exiled.Events.EventArgs.Player;
+using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Handlers;
+using LabApi.Features.Console;
 using NetworkManagerUtils.Dummies;
-using Log = Exiled.API.Features.Log;
 
-namespace RaCustomMenu;
+namespace RaCustomMenuLabApi;
 
 public class EventHandlers
 {
     public static void RegisterEvent()
     {
-        Exiled.Events.Handlers.Player.Verified += Verified;
-        Exiled.Events.Handlers.Player.Left += OnLeft;
+        PlayerEvents.Joined += Verified;
+        PlayerEvents.Left += OnLeft;
     }
     
     public static void UnRegisterEvent()
     {
-        Exiled.Events.Handlers.Player.Verified -= Verified;
-        Exiled.Events.Handlers.Player.Left -= OnLeft;
+        PlayerEvents.Joined -= Verified;
+        PlayerEvents.Left -= OnLeft;
     }
     
-    static void Verified(VerifiedEventArgs ev)
+    static void Verified(PlayerJoinedEventArgs ev)
     {
         Type targetType = typeof(DummyActionCollector);
         FieldInfo field = targetType.GetField("CollectionCache", BindingFlags.NonPublic | BindingFlags.Static);
         if (field == null)
         {
-            Log.Error("Field not found.");
+            Logger.Error("CollectionCache not found");
             return;
         }
         var dict = field.GetValue(null) as Dictionary<ReferenceHub, DummyActionCollector.CachedActions>;
@@ -38,13 +39,13 @@ public class EventHandlers
         }
     }
 
-    static void OnLeft(LeftEventArgs ev)
+    static void OnLeft(PlayerLeftEventArgs ev)
     {
         Type targetType = typeof(DummyActionCollector);
         FieldInfo field = targetType.GetField("CollectionCache", BindingFlags.NonPublic | BindingFlags.Static);
         if (field == null)
         {
-            Log.Error("Field not found.");
+            Logger.Error("CollectionCache not found");
             return;
         }
         var dict = field.GetValue(null) as Dictionary<ReferenceHub, DummyActionCollector.CachedActions>;
