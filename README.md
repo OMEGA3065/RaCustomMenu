@@ -1,8 +1,13 @@
 # RaCustomMenu
 [![Downloads](https://img.shields.io/github/downloads/Bankokwak/RaCustomMenu/total.svg)](https://github.com/Bankokwak/RaCustomMenu/releases/latest)
 
+### Exiled Version
 This plugin works on [EXILED](https://gitlab.com/exmod-team/EXILED/-/tree/LabAPI?ref_type=heads) >= **9.6.0**.
-Download `RaCustomMenu.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `../EXILED/Plugins/`.
+Download `RaCustomMenuExiled.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./EXILED/Plugins/`.
+
+### LabApi Version
+This plugin works on [LabApi](https://github.com/northwood-studios/LabAPI/releases/tag/0.7.0) >= **0.7.0**.
+Download `RaCustomMenuLabApi.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./LabAPI-Beta/plugins/global/`.
 
 # What is this plugin for ?
 RaCustomMenu allows you to add custom Categories and Actions to the Dummy Ra Category. You can (multi)select players and click a button to perform custom actions.
@@ -11,7 +16,7 @@ Example: give a [loadout](https://github.com/Bankokwak/RaCustomMenu/blob/master/
 If you multiselect players, the action can be stacked if the action names are the same; otherwise, the action is performed only on the clicked player's button.
 
 ## For plugin creator
-Reference RaCustomMenu DLL using the `RaCustomMenu.dll`.
+Reference RaCustomMenu DLL using the `RaCustomMenuExiled.dll` or `RaCustomMenuLabApi.dll`.
 
 - Create a new class
 
@@ -46,6 +51,13 @@ public override void OnEnabled()
 {
     Provider.RegisterAll();
     base.OnEnabled();
+}
+```
+and for LabApi, you can call this when the plugin is enabled:
+```c#
+public override void Enable()
+{
+    Provider.RegisterAll();
 }
 ```
 
