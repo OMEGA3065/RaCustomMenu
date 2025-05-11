@@ -7,7 +7,8 @@ Download `RaCustomMenuExiled.dll` in the [latest](https://github.com/Bankokwak/R
 
 ### LabApi Version
 This plugin works on [LabApi](https://github.com/northwood-studios/LabAPI/releases/tag/0.7.0) >= **0.7.0**.
-Download `RaCustomMenuLabApi.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./LabAPI-Beta/plugins/global/`.
+Download `RaCustomMenuLabApi.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./LabAPI-Beta/plugins/global(or {port})`.
+And you need to add `0Harmony.dll` into your `./LabAPI-Beta/dependencies/global(or {port})`.
 
 # What is this plugin for ?
 RaCustomMenu allows you to add custom Categories and Actions to the Dummy Ra Category. You can (multi)select players and click a button to perform custom actions.
