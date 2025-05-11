@@ -4,7 +4,7 @@ using NetworkManagerUtils.Dummies;
 
 namespace RaCustomMenuLabApi.Patchs;
 
-[HarmonyPatch(typeof(DummyActionCollector), nameof(DummyActionCollector.GetCache))]
+[HarmonyPatch(typeof(DummyActionCollector), "GetCache")]
 public static class PatchGetCache
 {
     [HarmonyPatch, HarmonyPrefix]

@@ -17,9 +17,16 @@ public static class ReceiveDataPatch
     private static readonly AccessTools.FieldRef<RaClientDataRequest, StringBuilder> StringBuilderRef =
         AccessTools.FieldRefAccess<RaClientDataRequest, StringBuilder>("_stringBuilder");
     
-    private static readonly Action<RaClientDataRequest> GatherDataDelegate =
-        AccessTools.MethodDelegate<Action<RaClientDataRequest>>(
-            AccessTools.Method(typeof(RaClientDataRequest).BaseType, "GatherData"));
+    private static readonly Action<RaClientDataRequest> GatherDataDelegate;
+    
+    static ReceiveDataPatch()
+    {
+        var methodInfo = AccessTools.Method(typeof(RaClientDataRequest), "GatherData");
+        if (methodInfo == null)
+            throw new Exception("Method 'GatherData' not found on RaClientDataRequest.");
+
+        GatherDataDelegate = AccessTools.MethodDelegate<Action<RaClientDataRequest>>(methodInfo);
+    }
 
     [HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, CommandSender sender, string data)
