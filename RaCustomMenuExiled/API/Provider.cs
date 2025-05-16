@@ -23,6 +23,21 @@ public abstract class Provider
         RegisterProviders(dynamicProvider);
     }
 
+    public static void AddActionDynamic(string categoryName, List<DummyAction> actions)
+    {
+        foreach (var provider in providersLoaded)
+        {
+            if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
+            {
+                dynamicProvider.AddDynamicActions(actions);
+                Log.Debug($"[DynamicProvider] Actions ajoutées à la catégorie : {categoryName}");
+                return;
+            }
+        }
+
+        Log.Warn($"[DynamicProvider] Aucun provider trouvé pour la catégorie : {categoryName}");
+    }
+
     public static void RegisterAllProviders() => RegisterProviders(Assembly.GetCallingAssembly());
 
     private static void RegisterProviders(Assembly assembly)
@@ -74,19 +89,29 @@ public class DynamicProvider : Provider
 {
     private readonly string _categoryName;
     private readonly bool _isDirty;
-    private readonly Func<ReferenceHub, List<DummyAction>> _actionGenerator;
+    private readonly Func<ReferenceHub, List<DummyAction>> _baseActionGenerator;
+    private readonly List<DummyAction> _additionalActions = new();
 
     public DynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
     {
         _categoryName = categoryName;
         _isDirty = isDirty;
-        _actionGenerator = actionGenerator;
+        _baseActionGenerator = actionGenerator;
     }
 
     public override string CategoryName => _categoryName;
 
     public override bool IsDirty => _isDirty;
 
+    public void AddDynamicActions(List<DummyAction> actions)
+    {
+        _additionalActions.AddRange(actions);
+    }
+
     public override List<DummyAction> AddAction(ReferenceHub hub)
-        => _actionGenerator.Invoke(hub);
+    {
+        var baseActions = _baseActionGenerator?.Invoke(hub) ?? new List<DummyAction>();
+        baseActions.AddRange(_additionalActions); // combine les actions ajoutées dynamiquement
+        return baseActions;
+    }
 }
