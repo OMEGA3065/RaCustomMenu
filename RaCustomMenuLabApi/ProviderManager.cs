@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LabApi.Features.Console;
 using NetworkManagerUtils.Dummies;
 using RaCustomMenuLabApi.API;
 
@@ -14,11 +15,11 @@ public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
         foreach (Provider provider in Allproviders)
         {
             categoryAdder(provider.CategoryName);
-            //Log.Debug($"Provider Category name {provider.CategoryName} added");
+            Logger.Debug($"Provider Category name {provider.CategoryName} added");
             List<DummyAction> actions = provider.AddAction(hub);
             foreach (DummyAction dummyAction in actions)
             {
-                //Log.Debug("Action name : "+dummyAction.Name);
+                Logger.Debug("Action name : "+dummyAction.Name);
                 actionAdder(dummyAction);
             }
             DummyActionsDirty = provider.IsDirty;

@@ -11,7 +11,7 @@ public class Plugin : Plugin<Config>
     public override string Name { get; } = "RaCustomMenuLabApi";
     public override string Description { get; } = "";
     public override string Author { get; } = "Bankokwak";
-    public override Version Version { get; } = new Version(1, 0, 0);
+    public override Version Version { get; } = new Version(1, 1, 0);
     public override Version RequiredApiVersion { get; } = new(LabApiProperties.CompiledVersion);
 
     public static Plugin Instance;
