@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Exiled.API.Features;
+using JetBrains.Annotations;
 using NetworkManagerUtils.Dummies;
 
 namespace RaCustomMenuExiled.API;
@@ -15,6 +16,12 @@ public abstract class Provider
     public abstract bool IsDirty { get; }
     
     public abstract List<DummyAction> AddAction(ReferenceHub hub);
+    
+    public static void RegisterDynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
+    {
+        var dynamicProvider = new DynamicProvider(categoryName, isDirty, actionGenerator);
+        RegisterProviders(dynamicProvider);
+    }
 
     public static void RegisterAllProviders() => RegisterProviders(Assembly.GetCallingAssembly());
 
@@ -24,7 +31,7 @@ public abstract class Provider
 
         foreach (Type type in assembly.GetTypes())
         {
-            if (!type.IsAbstract && typeof(Provider).IsAssignableFrom(type))
+            if (!type.IsAbstract && typeof(Provider).IsAssignableFrom(type) && type != typeof(DynamicProvider))
             {
                 try
                 {
@@ -51,7 +58,7 @@ public abstract class Provider
             }
         }
     }
-
+    
     private static void RegisterProviders(Provider provider)
     {
         if(provider == null)
@@ -61,4 +68,25 @@ public abstract class Provider
     }
     
     protected virtual void OnRegistered(){}
+}
+
+public class DynamicProvider : Provider
+{
+    private readonly string _categoryName;
+    private readonly bool _isDirty;
+    private readonly Func<ReferenceHub, List<DummyAction>> _actionGenerator;
+
+    public DynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
+    {
+        _categoryName = categoryName;
+        _isDirty = isDirty;
+        _actionGenerator = actionGenerator;
+    }
+
+    public override string CategoryName => _categoryName;
+
+    public override bool IsDirty => _isDirty;
+
+    public override List<DummyAction> AddAction(ReferenceHub hub)
+        => _actionGenerator.Invoke(hub);
 }
