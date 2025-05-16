@@ -17,10 +17,30 @@ public abstract class Provider
     
     public abstract List<DummyAction> AddAction(ReferenceHub hub);
     
+    public static bool HasProvider(string categoryName)
+    {
+        return providersLoaded.Exists(p => p.CategoryName == categoryName);
+    }
+    
     public static void RegisterDynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
     {
         var dynamicProvider = new DynamicProvider(categoryName, isDirty, actionGenerator);
         RegisterProviders(dynamicProvider);
+    }
+    
+    public static void UnregisterDynamicProvider(string categoryName)
+    {
+        for (int i = 0; i < providersLoaded.Count; i++)
+        {
+            if (providersLoaded[i] is DynamicProvider dp && dp.CategoryName == categoryName)
+            {
+                providersLoaded.RemoveAt(i);
+                Log.Debug($"[DynamicProvider] Provider \"{categoryName}\" supprimé.");
+                return;
+            }
+        }
+
+        Log.Warn($"[DynamicProvider] Aucun provider trouvé à désinscrire pour la catégorie : {categoryName}");
     }
 
     public static void AddActionDynamic(string categoryName, List<DummyAction> actions)
