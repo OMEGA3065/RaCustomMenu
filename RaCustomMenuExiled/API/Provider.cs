@@ -37,6 +37,21 @@ public abstract class Provider
 
         Log.Warn($"[DynamicProvider] Aucun provider trouvé pour la catégorie : {categoryName}");
     }
+    
+    public static void RemoveActionDynamic(string categoryName, string actionName)
+    {
+        foreach (var provider in providersLoaded)
+        {
+            if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
+            {
+                dynamicProvider.RemoveDynamicActionByName(actionName);
+                Log.Debug($"Action \"{actionName}\" retirée de la catégorie : {categoryName}");
+                return;
+            }
+        }
+
+        Log.Warn($"Aucun provider trouvé pour la catégorie : {categoryName}");
+    }
 
     public static void RegisterAllProviders() => RegisterProviders(Assembly.GetCallingAssembly());
 
@@ -111,7 +126,12 @@ public class DynamicProvider : Provider
     public override List<DummyAction> AddAction(ReferenceHub hub)
     {
         var baseActions = _baseActionGenerator?.Invoke(hub) ?? new List<DummyAction>();
-        baseActions.AddRange(_additionalActions); // combine les actions ajoutées dynamiquement
+        baseActions.AddRange(_additionalActions);
         return baseActions;
+    }
+    
+    public void RemoveDynamicActionByName(string actionName)
+    {
+        _additionalActions.RemoveAll(action => action.Name == actionName);
     }
 }
