@@ -32,6 +32,7 @@ public static class PatchActionDummyExecute
             response = "An unexpected problem has occurred during PlayerId or name array processing.";
             return false;
         }
+        
         string text = arguments.At(1);
         string text2 = arguments.At(2);
         int numPlayer = 0;
@@ -52,6 +53,10 @@ public static class PatchActionDummyExecute
                     }
                     else if (flag && text3 == text2)
                     {
+                        if (text2.Contains("U-") && numPlayer != 0 || numDummy != 0)
+                        {
+                            continue;
+                        }
                         dummyAction.Action.Invoke();
                         if (referenceHub.IsDummy)
                         {
