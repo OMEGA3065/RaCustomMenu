@@ -35,12 +35,12 @@ public abstract class Provider
             if (providersLoaded[i] is DynamicProvider dp && dp.CategoryName == categoryName)
             {
                 providersLoaded.RemoveAt(i);
-                Log.Debug($"[DynamicProvider] Provider \"{categoryName}\" supprimé.");
+                Log.Debug($"[DynamicProvider] Provider \"{categoryName}\" removed.");
                 return;
             }
         }
 
-        Log.Warn($"[DynamicProvider] Aucun provider trouvé à désinscrire pour la catégorie : {categoryName}");
+        Log.Warn($"[DynamicProvider] No provider found to unregister for category: {categoryName}");
     }
 
     public static void AddActionDynamic(string categoryName, List<DummyAction> actions)
@@ -50,12 +50,12 @@ public abstract class Provider
             if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
             {
                 dynamicProvider.AddDynamicActions(actions);
-                Log.Debug($"[DynamicProvider] Actions ajoutées à la catégorie : {categoryName}");
+                Log.Debug($"[DynamicProvider] Actions added to category: {categoryName}");
                 return;
             }
         }
 
-        Log.Warn($"[DynamicProvider] Aucun provider trouvé pour la catégorie : {categoryName}");
+        Log.Warn($"[DynamicProvider] No provider found for category: {categoryName}");
     }
     
     public static void RemoveActionDynamic(string categoryName, string actionName)
@@ -65,12 +65,12 @@ public abstract class Provider
             if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
             {
                 dynamicProvider.RemoveDynamicActionByName(actionName);
-                Log.Debug($"Action \"{actionName}\" retirée de la catégorie : {categoryName}");
+                Log.Debug($"[DynamicProvider] Action \"{actionName}\" removed from category: {categoryName}");
                 return;
             }
         }
 
-        Log.Warn($"Aucun provider trouvé pour la catégorie : {categoryName}");
+        Log.Warn($"[DynamicProvider] No provider found for category: {categoryName}");
     }
 
     public static void RegisterAllProviders() => RegisterProviders(Assembly.GetCallingAssembly());
@@ -91,7 +91,7 @@ public abstract class Provider
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"Erreur lors de l'instanciation de {type.Name} : {ex}");
+                    Log.Error($"[DynamicProvider] Error while instantiating {type.Name}: {ex}");
                 }
             }
         }
