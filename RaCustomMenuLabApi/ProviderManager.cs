@@ -15,11 +15,11 @@ public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
         foreach (Provider provider in Allproviders)
         {
             categoryAdder(provider.CategoryName);
-            Logger.Debug($"Provider Category name {provider.CategoryName} added");
+            Logger.Debug($"Provider Category name {provider.CategoryName} added", Plugin.Instance.Config.Debug);
             List<DummyAction> actions = provider.AddAction(hub);
             foreach (DummyAction dummyAction in actions)
             {
-                Logger.Debug("Action name : "+dummyAction.Name);
+                Logger.Debug("Action name : "+dummyAction.Name, Plugin.Instance.Config.Debug);
                 actionAdder(dummyAction);
             }
             DummyActionsDirty = provider.IsDirty;
