@@ -35,7 +35,7 @@ public abstract class Provider
             if (providersLoaded[i] is DynamicProvider dp && dp.CategoryName == categoryName)
             {
                 providersLoaded.RemoveAt(i);
-                Logger.Debug($"[DynamicProvider] Provider \"{categoryName}\" removed.");
+                Logger.Debug($"[DynamicProvider] Provider \"{categoryName}\" removed.", Plugin.Instance.Config.Debug);
                 return;
             }
         }
@@ -50,7 +50,7 @@ public abstract class Provider
             if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
             {
                 dynamicProvider.AddDynamicActions(actions);
-                Logger.Debug($"[DynamicProvider] Actions added to category: {categoryName}");
+                Logger.Debug($"[DynamicProvider] Actions added to category: {categoryName}", Plugin.Instance.Config.Debug);
                 return;
             }
         }
@@ -65,7 +65,7 @@ public abstract class Provider
             if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
             {
                 dynamicProvider.RemoveDynamicActionByName(actionName);
-                Logger.Debug($"[DynamicProvider] Action \"{actionName}\" removed from category: {categoryName}");
+                Logger.Debug($"[DynamicProvider] Action \"{actionName}\" removed from category: {categoryName}", Plugin.Instance.Config.Debug);
                 return;
             }
         }
