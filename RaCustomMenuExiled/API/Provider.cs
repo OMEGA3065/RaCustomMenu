@@ -17,10 +17,60 @@ public abstract class Provider
     
     public abstract List<DummyAction> AddAction(ReferenceHub hub);
     
+    public static bool HasProvider(string categoryName)
+    {
+        return providersLoaded.Exists(p => p.CategoryName == categoryName);
+    }
+    
     public static void RegisterDynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
     {
         var dynamicProvider = new DynamicProvider(categoryName, isDirty, actionGenerator);
         RegisterProviders(dynamicProvider);
+    }
+    
+    public static void UnregisterDynamicProvider(string categoryName)
+    {
+        for (int i = 0; i < providersLoaded.Count; i++)
+        {
+            if (providersLoaded[i] is DynamicProvider dp && dp.CategoryName == categoryName)
+            {
+                providersLoaded.RemoveAt(i);
+                Log.Debug($"[DynamicProvider] Provider \"{categoryName}\" removed.");
+                return;
+            }
+        }
+
+        Log.Warn($"[DynamicProvider] No provider found to unregister for category: {categoryName}");
+    }
+
+    public static void AddActionDynamic(string categoryName, List<DummyAction> actions)
+    {
+        foreach (var provider in providersLoaded)
+        {
+            if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
+            {
+                dynamicProvider.AddDynamicActions(actions);
+                Log.Debug($"[DynamicProvider] Actions added to category: {categoryName}");
+                return;
+            }
+        }
+
+        Log.Warn($"[DynamicProvider] No provider found for category: {categoryName}");
+    }
+    
+    public static void RemoveActionDynamic(string categoryName, string actionName)
+    {
+        foreach (var provider in providersLoaded)
+        {
+            if (provider is DynamicProvider dynamicProvider && dynamicProvider.CategoryName == categoryName)
+            {
+                dynamicProvider.RemoveDynamicActionByName(actionName);
+                Log.Debug($"[DynamicProvider] Action \"{actionName}\" removed from category: {categoryName}");
+                return;
+            }
+        }
+
+        Log.Warn($"[DynamicProvider] No provider found for category: {categoryName}");
     }
 
     public static void RegisterAllProviders() => RegisterProviders(Assembly.GetCallingAssembly());
@@ -41,7 +91,7 @@ public abstract class Provider
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"Erreur lors de l'instanciation de {type.Name} : {ex}");
+                    Log.Error($"[DynamicProvider] Error while instantiating {type.Name}: {ex}");
                 }
             }
         }
@@ -74,19 +124,34 @@ public class DynamicProvider : Provider
 {
     private readonly string _categoryName;
     private readonly bool _isDirty;
-    private readonly Func<ReferenceHub, List<DummyAction>> _actionGenerator;
+    private readonly Func<ReferenceHub, List<DummyAction>> _baseActionGenerator;
+    private readonly List<DummyAction> _additionalActions = new();
 
     public DynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
     {
         _categoryName = categoryName;
         _isDirty = isDirty;
-        _actionGenerator = actionGenerator;
+        _baseActionGenerator = actionGenerator;
     }
 
     public override string CategoryName => _categoryName;
 
     public override bool IsDirty => _isDirty;
 
+    public void AddDynamicActions(List<DummyAction> actions)
+    {
+        _additionalActions.AddRange(actions);
+    }
+
     public override List<DummyAction> AddAction(ReferenceHub hub)
-        => _actionGenerator.Invoke(hub);
+    {
+        var baseActions = _baseActionGenerator?.Invoke(hub) ?? new List<DummyAction>();
+        baseActions.AddRange(_additionalActions);
+        return baseActions;
+    }
+    
+    public void RemoveDynamicActionByName(string actionName)
+    {
+        _additionalActions.RemoveAll(action => action.Name == actionName);
+    }
 }
