@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CommandSystem;
 using CommandSystem.Commands.RemoteAdmin.Dummies;
 using Exiled.API.Features;
+using Exiled.Permissions.Extensions;
 using HarmonyLib;
 using NetworkManagerUtils.Dummies;
 using RemoteAdmin.Communication;
@@ -16,8 +17,9 @@ public static class PatchActionDummyExecute
     [HarmonyPatch, HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, ArraySegment<string> arguments, ICommandSender sender, out string response, ref bool __result)
     {
-        if (!sender.CheckPermission(PlayerPermissions.FacilityManagement, out response))
+        if (!sender.CheckPermission("rcm.action"))
         {
+            response = "You need a permission to use this command.";
             return false;
         }
         if (arguments.Count < 3)
