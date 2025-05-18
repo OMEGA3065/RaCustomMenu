@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CommandSystem;
 using CommandSystem.Commands.RemoteAdmin.Dummies;
 using Exiled.API.Features;
+using Exiled.Permissions.Extensions;
 using HarmonyLib;
 using NetworkManagerUtils.Dummies;
 using RemoteAdmin.Communication;
@@ -16,8 +17,9 @@ public static class PatchActionDummyExecute
     [HarmonyPatch, HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, ArraySegment<string> arguments, ICommandSender sender, out string response, ref bool __result)
     {
-        if (!sender.CheckPermission(PlayerPermissions.FacilityManagement, out response))
+        if (!sender.CheckPermission("rcm.action"))
         {
+            response = "You need a permission to use this command.";
             return false;
         }
         if (arguments.Count < 3)
@@ -32,6 +34,7 @@ public static class PatchActionDummyExecute
             response = "An unexpected problem has occurred during PlayerId or name array processing.";
             return false;
         }
+        
         string text = arguments.At(1);
         string text2 = arguments.At(2);
         int numPlayer = 0;
@@ -52,6 +55,10 @@ public static class PatchActionDummyExecute
                     }
                     else if (flag && text3 == text2)
                     {
+                        if (text2.Contains("U-") && numPlayer != 0 || numDummy != 0)
+                        {
+                            continue;
+                        }
                         dummyAction.Action.Invoke();
                         if (referenceHub.IsDummy)
                         {

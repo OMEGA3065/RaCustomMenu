@@ -15,8 +15,9 @@ public static class PatchActionDummyExecute
     [HarmonyPatch, HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, ArraySegment<string> arguments, ICommandSender sender, out string response, ref bool __result)
     {
-        if (!sender.CheckPermission(PlayerPermissions.FacilityManagement, out response))
+        if (LabApi.Features.Permissions.PermissionsExtensions.HasPermissions(sender, "rcm.action"))
         {
+            response = "You need a permission to use this command.";
             return false;
         }
         if (arguments.Count < 3)
