@@ -6,7 +6,7 @@ This plugin works on [EXILED](https://gitlab.com/exmod-team/EXILED/-/tree/LabAPI
 Download `RaCustomMenuExiled.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./EXILED/Plugins/`.
 
 ### LabApi Version
-This plugin works on [LabApi](https://github.com/northwood-studios/LabAPI/releases/tag/0.7.0) >= **0.7.0**.
+This plugin works on [LabApi](https://github.com/northwood-studios/LabAPI/releases/tag/1.0.2) >= **1.0.2**.
 Download `RaCustomMenuLabApi.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./LabAPI-Beta/plugins/global(or {port})`.
 And you need to add `0Harmony.dll` into your `./LabAPI-Beta/dependencies/global(or {port})`.
 
