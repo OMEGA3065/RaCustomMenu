@@ -51,7 +51,7 @@ If you name the action `U-{name}`, he can perform only 1 time even you multisele
 
 Now you need, on the start of the server, register `Provider` of your `Assembly`
 ```c#
-Provider.RegisterAll();
+Provider.RegisterAllProviders();
 ```
 
 for EXILED, you can call this when the plugin is enabled:
