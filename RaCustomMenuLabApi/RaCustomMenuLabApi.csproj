@@ -77,6 +77,7 @@
         <Compile Include="Patchs\PatchCachedAction.cs" />
         <Compile Include="Patchs\PatchGatherData.cs" />
         <Compile Include="Patchs\PatchGetCache.cs" />
+        <Compile Include="Patchs\PatchNullProvider.cs" />
         <Compile Include="Patchs\PatchReceiveData.cs" />
         <Compile Include="Plugin.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
