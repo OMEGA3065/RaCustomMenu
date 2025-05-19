@@ -47,6 +47,8 @@ this is a example of a provider class (with needed `override`):
 ```
 IsDirty set to true update name and category after click on action. See [that](https://github.com/Bankokwak/RaCustomMenu/blob/652f4ba746ee9f3c005b377b671de89fcf5e5277/RaCustomMenuExiled/Example/ProviderRandomTest.cs#L22).
 
+If you name the action `U-{name}`, he can perform only 1 time even you multiselect.
+
 Now you need, on the start of the server, register `Provider` of your `Assembly`
 ```c#
 Provider.RegisterAll();
