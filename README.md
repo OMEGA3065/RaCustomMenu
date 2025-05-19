@@ -58,7 +58,7 @@ for EXILED, you can call this when the plugin is enabled:
 ```c#
 public override void OnEnabled()
 {
-    Provider.RegisterAll();
+    Provider.RegisterAllProviders();
     base.OnEnabled();
 }
 ```
@@ -66,7 +66,7 @@ and for LabApi, you can call this when the plugin is enabled:
 ```c#
 public override void Enable()
 {
-    Provider.RegisterAll();
+    Provider.RegisterAllProviders();
 }
 ```
 
