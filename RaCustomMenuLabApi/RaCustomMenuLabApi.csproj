@@ -71,6 +71,7 @@
         <Compile Include="API\Provider.cs" />
         <Compile Include="Config.cs" />
         <Compile Include="EventHandlers.cs" />
+        <Compile Include="Example\DynamicProviderTest.cs" />
         <Compile Include="Example\ProviderLoadout.cs" />
         <Compile Include="Example\ProviderRandomTest.cs" />
         <Compile Include="Patchs\PatchActionDummyExecute.cs" />

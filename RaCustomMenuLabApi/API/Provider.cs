@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
 using LabApi.Features.Console;
+using LabApi.Features.Wrappers;
 using NetworkManagerUtils.Dummies;
 
 namespace RaCustomMenuLabApi.API;
@@ -10,6 +11,7 @@ namespace RaCustomMenuLabApi.API;
 public abstract class Provider
 {
     public static readonly List<Provider> providersLoaded = new List<Provider>();
+    protected static List<Player> targetedPlayers = new();
     
     public abstract string CategoryName { get; }
     
@@ -17,14 +19,36 @@ public abstract class Provider
     
     public abstract List<DummyAction> AddAction(ReferenceHub hub);
     
+    public virtual List<Player> TargetPlayer()
+    {
+        return targetedPlayers.Count == 0 ? null : targetedPlayers;
+    }
+    
+    public static void AddTarget(Player player)
+    {
+        if (!targetedPlayers.Contains(player))
+            targetedPlayers.Add(player);
+    }
+
+    public static void RemoveTarget(Player player)
+    {
+        if (targetedPlayers.Contains(player))
+            targetedPlayers.Remove(player);
+    }
+    
+    public static void ClearTargets()
+    {
+        targetedPlayers.Clear();
+    }
+    
     public static bool HasProvider(string categoryName)
     {
         return providersLoaded.Exists(p => p.CategoryName == categoryName);
     }
     
-    public static void RegisterDynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
+    public static void RegisterDynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator, [CanBeNull] List<Player> PlayerAllow)
     {
-        var dynamicProvider = new DynamicProvider(categoryName, isDirty, actionGenerator);
+        var dynamicProvider = new DynamicProvider(categoryName, isDirty, actionGenerator,PlayerAllow);
         RegisterProviders(dynamicProvider);
     }
     
@@ -126,12 +150,14 @@ public class DynamicProvider : Provider
     private readonly bool _isDirty;
     private readonly Func<ReferenceHub, List<DummyAction>> _baseActionGenerator;
     private readonly List<DummyAction> _additionalActions = new();
+    private readonly List<Player> _targetedPlayers;
 
-    public DynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator)
+    public DynamicProvider(string categoryName, bool isDirty, Func<ReferenceHub, List<DummyAction>> actionGenerator, [CanBeNull] List<Player> PlayerAllow)
     {
         _categoryName = categoryName;
         _isDirty = isDirty;
         _baseActionGenerator = actionGenerator;
+        _targetedPlayers = PlayerAllow;
     }
 
     public override string CategoryName => _categoryName;
@@ -149,7 +175,12 @@ public class DynamicProvider : Provider
         baseActions.AddRange(_additionalActions);
         return baseActions;
     }
-    
+
+    public override List<Player> TargetPlayer()
+    {
+        return _targetedPlayers;
+    }
+
     public void RemoveDynamicActionByName(string actionName)
     {
         _additionalActions.RemoveAll(action => action.Name == actionName);
