@@ -14,15 +14,21 @@ public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
     {
         foreach (Provider provider in Allproviders)
         {
-            categoryAdder(provider.CategoryName);
-            Log.Debug($"Provider Category name {provider.CategoryName} added");
-            List<DummyAction> actions = provider.AddAction(hub);
-            foreach (DummyAction dummyAction in actions)
+            List<Player> targets = provider.TargetPlayer();
+            if (targets == null || targets.Contains(Player.Get(hub)))
             {
-                Log.Debug("Action name : "+dummyAction.Name);
-                actionAdder(dummyAction);
+                categoryAdder(provider.CategoryName);
+                Log.Debug($"Provider Category name {provider.CategoryName} added");
+
+                List<DummyAction> actions = provider.AddAction(hub);
+                foreach (DummyAction dummyAction in actions)
+                {
+                    Log.Debug("Action name : " + dummyAction.Name);
+                    actionAdder(dummyAction);
+                }
+
+                DummyActionsDirty = provider.IsDirty;
             }
-            DummyActionsDirty = provider.IsDirty;
         }
     }
 

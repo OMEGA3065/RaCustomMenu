@@ -5,11 +5,20 @@ using RaCustomMenuExiled.API;
 
 namespace RaCustomMenuExiled.Example;
 
-public class ProviderLoadout: Provider
+public class ProviderLoadout : Provider
 {
+    public static ProviderLoadout Instance { get; private set; }
+
+    public List<Player> TargetPlayers { get; set; } = new();
+
     public override string CategoryName { get; } = "Loadout";
 
     public override bool IsDirty { get; } = true;
+
+    public ProviderLoadout()
+    {
+        Instance = this;
+    }
 
     public override List<DummyAction> AddAction(ReferenceHub hub)
     {
@@ -22,5 +31,10 @@ public class ProviderLoadout: Provider
                 pl.AddItem(ItemType.GunFRMG0);
             })
         };
+    }
+
+    public override List<Player> TargetPlayer()
+    {
+        return TargetPlayers;
     }
 }

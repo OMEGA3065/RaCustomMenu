@@ -22,6 +22,12 @@ public class ProviderRandomTest: Provider
             new DummyAction($"Test {num}", () =>
             {
                 num++;
+            }),
+            new DummyAction($"Test Add Target Loadout", () =>
+            {
+                var player = Player.Get(hub);
+                if (!ProviderLoadout.Instance.TargetPlayers.Contains(player))
+                    ProviderLoadout.Instance.TargetPlayers.Add(player);
             })
         };
     }
