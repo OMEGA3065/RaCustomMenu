@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="61b09eff-371d-455d-af08-87e2fab70058" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Bankokwak&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Bankokwak/RaCustomMenu&quot;,
+    &quot;accountId&quot;: &quot;b09fec6f-8ccb-4e02-abe0-1709e6b94c91&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/8db1ca0fe9a6484084cda320b139932c3c2600/01/a19c47da/0200031C.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b549555f5464a2aaa40aa66acfb1ecd86400/fd/661adbd7/Plugin`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/68596d78b3e741db9cc9fcf446bf89b694a00/95/911a236b/Logger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8db1ca0fe9a6484084cda320b139932c3c2600/95/e954258d/DummyAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ea906d315a6544b2b1f66836cce90ff83bb200/5e/42913180/IRootDummyActionProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ea906d315a6544b2b1f66836cce90ff83bb200/c8/d0906c2b/DummyAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ea906d315a6544b2b1f66836cce90ff83bb200/fa/590b3d8e/DummyActionCollector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/baban/RiderProjects/RaCustomMenu/RaCustomMenuExiled/Plugin.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/baban/RiderProjects/RaCustomMenu/RaCustomMenuExiled/Plugin.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/baban/RiderProjects/RaCustomMenu/RaCustomMenuLabApi/Plugin.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2wo9T0YsCJqNNhlv5x0QUgg05cV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61b09eff-371d-455d-af08-87e2fab70058" name="Changes" comment="" />
+      <created>1746697063238</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746697063238</updated>
+      <workItem from="1746697064346" duration="8991000" />
+      <workItem from="1746707833641" duration="1690000" />
+      <workItem from="1746970010428" duration="693000" />
+      <workItem from="1746971337990" duration="3703000" />
+      <workItem from="1746993162005" duration="1663000" />
+      <workItem from="1746996805497" duration="371000" />
+      <workItem from="1747406907663" duration="2408000" />
+      <workItem from="1747411938033" duration="1120000" />
+      <workItem from="1747414841049" duration="183000" />
+      <workItem from="1747415554699" duration="110000" />
+      <workItem from="1747416065221" duration="30000" />
+      <workItem from="1747416360770" duration="233000" />
+      <workItem from="1747426786277" duration="171000" />
+      <workItem from="1747427600243" duration="1068000" />
+      <workItem from="1747428782338" duration="55000" />
+      <workItem from="1747437615130" duration="7000" />
+      <workItem from="1747438545751" duration="400000" />
+      <workItem from="1747472725636" duration="369000" />
+      <workItem from="1747473169567" duration="108000" />
+      <workItem from="1747473348686" duration="797000" />
+      <workItem from="1747475166927" duration="120000" />
+      <workItem from="1747475959810" duration="683000" />
+      <workItem from="1747476680150" duration="2281000" />
+      <workItem from="1747479069914" duration="535000" />
+      <workItem from="1747482097060" duration="31000" />
+      <workItem from="1747482142554" duration="10000" />
+      <workItem from="1747482214512" duration="6000" />
+      <workItem from="1747482359846" duration="15000" />
+      <workItem from="1747597013896" duration="429000" />
+      <workItem from="1747601083926" duration="404000" />
+      <workItem from="1747636289997" duration="22000" />
+      <workItem from="1747683601257" duration="727000" />
+      <workItem from="1747684859192" duration="113000" />
+      <workItem from="1747746008381" duration="191000" />
+      <workItem from="1747774871555" duration="164000" />
+      <workItem from="1747775251261" duration="84000" />
+      <workItem from="1747933872523" duration="6006000" />
+      <workItem from="1747941726485" duration="1439000" />
+      <workItem from="1747991183401" duration="2645000" />
+      <workItem from="1747994211511" duration="353000" />
+      <workItem from="1748040891687" duration="893000" />
+      <workItem from="1748043222950" duration="139000" />
+      <workItem from="1748093678023" duration="816000" />
+      <workItem from="1748194004558" duration="2635000" />
+      <workItem from="1748196680337" duration="142000" />
+    </task>
+    <task id="LOCAL-00001" summary="First Commit">
+      <option name="closed" value="true" />
+      <created>1746707204771</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746707204771</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix problem and add unsafe code for LabApi (for Harmony patch)">
+      <option name="closed" value="true" />
+      <created>1746993942713</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746993942713</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Change Instruction for LabApi in README.md">
+      <option name="closed" value="true" />
+      <created>1746994189773</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746994189773</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add config and Isdirty to the instruction">
+      <option name="closed" value="true" />
+      <created>1746997173591</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746997173591</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add methods DynamicProvider">
+      <option name="closed" value="true" />
+      <created>1747410294997</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747410294997</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add AddActionDynamic">
+      <option name="closed" value="true" />
+      <created>1747416088687</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747416088687</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Remove DynamicAction">
+      <option name="closed" value="true" />
+      <created>1747416567139</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747416567139</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add UnregisterProvider and HasProvider">
+      <option name="closed" value="true" />
+      <created>1747426934659</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1747426934659</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add to labapi dynamic features">
+      <option name="closed" value="true" />
+      <created>1747438850012</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1747438850012</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Translate Log and Logger to english">
+      <option name="closed" value="true" />
+      <created>1747473014566</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747473014566</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Change Logger.Debug to add parameters canBePrinted">
+      <option name="closed" value="true" />
+      <created>1747476573886</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747476573886</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Unique parameters&#10;&quot;U-&quot;">
+      <option name="closed" value="true" />
+      <created>1747478960869</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747478960869</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Change check permisison">
+      <option name="closed" value="true" />
+      <created>1747597270255</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747597270255</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add Patch to fixe NRE from provider&#10;because NW moment">
+      <option name="closed" value="true" />
+      <created>1747683926908</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747683926908</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add Patch to fixe NRE from provider&#10;because NW moment">
+      <option name="closed" value="true" />
+      <created>1747683987769</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747683987769</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add U- description">
+      <option name="closed" value="true" />
+      <created>1747684103946</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1747684103946</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add Target Player to Dynamic and simple Provider, need to change the README.MD">
+      <option name="closed" value="true" />
+      <created>1747943149818</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1747943149818</updated>
+    </task>
+    <task id="LOCAL-00018" summary="change README.md">
+      <option name="closed" value="true" />
+      <created>1747993998514</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1747993998514</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add targetPlayer for LabApi">
+      <option name="closed" value="true" />
+      <created>1747994559363</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1747994559363</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Change for environment variable and fix the permissions problem with LabApi">
+      <option name="closed" value="true" />
+      <created>1748196064930</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748196064930</updated>
+    </task>
+    <task id="LOCAL-00021" summary="i don't know what is that but i add it">
+      <option name="closed" value="true" />
+      <created>1748196326304</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1748196326304</updated>
+    </task>
+    <task id="LOCAL-00022" summary="CHange version file">
+      <option name="closed" value="true" />
+      <created>1748196791857</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748196791857</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="First Commit" />
+    <MESSAGE value="Fix problem and add unsafe code for LabApi (for Harmony patch)" />
+    <MESSAGE value="Change Instruction for LabApi in README.md" />
+    <MESSAGE value="Add config and Isdirty to the instruction" />
+    <MESSAGE value="Add methods DynamicProvider" />
+    <MESSAGE value="Add AddActionDynamic" />
+    <MESSAGE value="Add Remove DynamicAction" />
+    <MESSAGE value="Add UnregisterProvider and HasProvider" />
+    <MESSAGE value="add to labapi dynamic features" />
+    <MESSAGE value="Translate Log and Logger to english" />
+    <MESSAGE value="Change Logger.Debug to add parameters canBePrinted" />
+    <MESSAGE value="Add Unique parameters&#10;&quot;U-&quot;" />
+    <MESSAGE value="Change check permisison" />
+    <MESSAGE value="Add Patch to fixe NRE from provider&#10;because NW moment" />
+    <MESSAGE value="Add U- description" />
+    <MESSAGE value="Add Target Player to Dynamic and simple Provider, need to change the README.MD" />
+    <MESSAGE value="change README.md" />
+    <MESSAGE value="Add targetPlayer for LabApi" />
+    <MESSAGE value="Change for environment variable and fix the permissions problem with LabApi" />
+    <MESSAGE value="i don't know what is that but i add it" />
+    <MESSAGE value="CHange version file" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHange version file" />
+  </component>
+</project>
