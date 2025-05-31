@@ -20,6 +20,6 @@ If you multiselect players, the action can be stacked if the action names are th
 In config file you can enable and disable the test button: See [here](https://github.com/Bankokwak/RaCustomMenu/blob/652f4ba746ee9f3c005b377b671de89fcf5e5277/RaCustomMenuExiled/Config.cs#L11C5-L11C6)
 
 ## For plugin creator
-A [wiki](https://github.com/Bankokwak/RaCustomMenu/wiki) are here for you.
+A [wiki](https://github.com/Bankokwak/RaCustomMenu/wiki) has been setup here just for you.
 
-## if you see a bug, please report this [here](https://github.com/Bankokwak/RaCustomMenu/issues) or in my mp ( bankokwak ).
+## if you see a bug, please report this [here](https://github.com/Bankokwak/RaCustomMenu/issues) or in my Discord dm ( bankokwak ).
