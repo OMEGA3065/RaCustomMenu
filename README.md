@@ -19,6 +19,15 @@ If you multiselect players, the action can be stacked if the action names are th
 ## Config
 In config file you can enable and disable the test button: See [here](https://github.com/Bankokwak/RaCustomMenu/blob/652f4ba746ee9f3c005b377b671de89fcf5e5277/RaCustomMenuExiled/Config.cs#L11C5-L11C6)
 
+## Permission
+You need to add `rcm.actions` to a RA role in your permissions.yml file, with that, the users can use the RA Custom Menu
+
+### For EXILED :
+`./EXILED/Config/permissions.yml`
+
+### For LabApi
+`./LabAPI/configs/permissions.yml`.
+
 ## For plugin creator
 A [wiki](https://github.com/Bankokwak/RaCustomMenu/wiki) has been setup here just for you.
 
