@@ -98,7 +98,7 @@ public abstract class Provider
 
     public static void RegisterAllProviders() => RegisterProviders(Assembly.GetCallingAssembly());
 
-    private static void RegisterProviders(Assembly assembly)
+    public static void RegisterProviders(Assembly assembly)
     {
         List<Provider> providers = new();
 
