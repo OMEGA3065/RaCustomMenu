@@ -55,7 +55,7 @@ public static class PatchActionDummyExecute
                     }
                     else if (flag && text3 == text2)
                     {
-                        if (text2.Contains("U-") && numPlayer != 0 || numDummy != 0)
+                        if (text2.Contains("U-") && (numPlayer != 0 || numDummy != 0))
                         {
                             continue;
                         }
