@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Plugin",
+			"type": "shell",
+			"command": "cd ${workspaceFolder} && ${workspaceFolder}/.vscode/build.sh",
+			// "command": "cd ${workspaceFolder} && ${workspaceFolder}/.vscode/buildTechLaboratory.sh",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		}
+	]
+}

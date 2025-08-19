@@ -1,0 +1,6 @@
+{
+    "dotnet.defaultSolution": "WebApplication1.sln",
+    "python.analysis.extraPaths": [
+        "./server/Configs/TechLaboratory/ItemTextures/Scripts"
+    ]
+}
