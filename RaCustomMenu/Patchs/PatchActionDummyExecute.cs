@@ -4,11 +4,11 @@ using CommandSystem;
 using CommandSystem.Commands.RemoteAdmin.Dummies;
 using HarmonyLib;
 using LabApi.Features.Console;
-using NetworkManagerUtils.Dummies;
 using LabApi.Features.Permissions;
+using NetworkManagerUtils.Dummies;
+using RaCustomMenu.API;
 using RemoteAdmin.Communication;
 using Utils;
-using RaCustomMenu.API;
 using Utils.NonAllocLINQ;
 
 namespace RaCustomMenu.Patchs;
@@ -19,7 +19,7 @@ public static class PatchActionDummyExecute
     [HarmonyPatch, HarmonyPrefix]
     public static bool Prefix(RaDummyActions __instance, ArraySegment<string> arguments, ICommandSender sender, out string response, ref bool __result)
     {
-        if (!sender.HasAnyPermission(RaCustomMenuPlugin.Instance?.Config?.DefaultRequiredPermission ?? "rcm.actions"))
+        if (!string.IsNullOrWhiteSpace(RaCustomMenuPlugin.Instance?.Config?.DefaultRequiredPermission) && !sender.HasAnyPermission(RaCustomMenuPlugin.Instance.Config.DefaultRequiredPermission))
         {
             response = "You need a permission to use this command.";
             return false;
@@ -52,7 +52,7 @@ public static class PatchActionDummyExecute
                     string text3 = dummyAction.Name.Replace(' ', '_');
                     if (dummyAction.Action == null)
                     {
-                        flag = (text3 == text);
+                        flag = text3 == text;
                     }
                     else if (flag && text3 == text2)
                     {
@@ -60,18 +60,20 @@ public static class PatchActionDummyExecute
                         {
                             continue;
                         }
-                        if (
-                            Provider.providersLoaded.TryGetFirst(p => p.CategoryName == text, out var provider)
-                            && !provider.MayExecuteThis(sender)
-                            )
+                        if (Provider.providersLoaded.TryGetFirst(p => p.CategoryName.Replace(' ', '_') == text, out var provider)
+                            && provider.AddActions(referenceHub).TryGetFirst(a => a.Name == dummyAction.Name, out var customAction))
                         {
-                            continue;
+                            customAction.Action.Invoke(sender);
                         }
-                        dummyAction.Action.Invoke();
+                        else
+                        {
+                            dummyAction.Action.Invoke();
+                        }
                         if (referenceHub.IsDummy)
                         {
                             numDummy++;
-                        }else if (!referenceHub.IsDummy)
+                        }
+                        else
                         {
                             numPlayer++;
                         }
@@ -83,13 +85,16 @@ public static class PatchActionDummyExecute
         if (numPlayer == 0 && numDummy == 0)
         {
             response = "Action requested on 0 user";
-        }else if (numPlayer > 0 && numDummy == 0)
+        }
+        else if (numPlayer > 0 && numDummy == 0)
         {
             response = string.Format("Action requested on {0} play{1}", numPlayer, (numPlayer == 1) ? "er!" : "ers!");
-        }else if (numPlayer == 0 && numDummy > 0)
+        }
+        else if (numPlayer == 0 && numDummy > 0)
         {
             response = string.Format("Action requested on {0} dumm{1}", numDummy, (numDummy == 1) ? "y!" : "ies!");
-        }else if (numPlayer > 0 && numDummy > 0)
+        }
+        else if (numPlayer > 0 && numDummy > 0)
         {
             response = string.Format("Action requested on {0} dumm{1} and on {2} play{3}", numDummy, (numDummy == 1) ? "y" : "ies", numPlayer, (numPlayer == 1) ? "er!" : "ers!");
         }

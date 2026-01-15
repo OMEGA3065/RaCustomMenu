@@ -8,10 +8,10 @@ using RaCustomMenu.API;
 
 namespace RaCustomMenu;
 
-public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
+public class ProviderManager(ReferenceHub hub) : IRootDummyActionProvider
 {
     private readonly List<Provider> AllProviders = Provider.providersLoaded;
-    
+
     public void PopulateDummyActions(Action<DummyAction> actionAdder, Action<string> categoryAdder)
     {
         foreach (Provider provider in AllProviders)
@@ -23,7 +23,7 @@ public class ProviderManager(ReferenceHub hub): IRootDummyActionProvider
             categoryAdder(provider.CategoryName);
             DebugLogger.Log($"Provider Category name {provider.CategoryName} added");
 
-            List<DummyAction> actions = provider.AddAction(hub);
+            var actions = provider.GetActionList(hub);
             foreach (DummyAction dummyAction in actions)
             {
                 DebugLogger.Log("Action name : " + dummyAction.Name);

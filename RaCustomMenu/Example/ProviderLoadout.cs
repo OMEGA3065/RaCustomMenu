@@ -5,7 +5,7 @@ using RaCustomMenu.API;
 
 namespace RaCustomMenu.Example;
 
-public class ProviderLoadout: Provider
+public class ProviderLoadout : Provider
 {
     public static ProviderLoadout Instance { get; private set; }
 
@@ -20,21 +20,16 @@ public class ProviderLoadout: Provider
         Instance = this;
     }
 
-    public override List<DummyAction> AddAction(ReferenceHub hub)
+    public override List<LimitedDummyAction> AddActions(ReferenceHub hub)
     {
-        return new List<DummyAction>()
-        {
-            new DummyAction("Give Loadout", () =>
+        return
+        [
+            new("Give Loadout", (sender) =>
             {
                 Player pl = Player.Get(hub);
                 pl.AddItem(ItemType.Adrenaline);
                 pl.AddItem(ItemType.GunFRMG0);
             })
-        };
-    }
-
-    public override List<Player> TargetPlayer()
-    {
-        return TargetPlayers;
+        ];
     }
 }

@@ -6,26 +6,25 @@ using RaCustomMenu.API;
 
 namespace RaCustomMenu.Example;
 
-public class DynamicProviderTest: Provider
+public class DynamicProviderTest : Provider
 {
     private List<Player> allowPlayer = new List<Player>();
     public override string CategoryName { get; } = "DynamicProvider";
     public override bool IsDirty { get; } = true;
-    public override List<DummyAction> AddAction(ReferenceHub hub)
+    public override List<LimitedDummyAction> AddActions(ReferenceHub hub)
     {
-        return new List<DummyAction>()
-        {
-            new DummyAction("Test", () =>
+        return
+        [
+            new("Test", (sender) =>
             {
                 allowPlayer.Add(Player.Get(hub));
-                Provider.RegisterDynamicProvider("DynamicProviderTest", true, referenceHub => new List<DummyAction>()
-                {
-                    new DummyAction("DynamicTest", () =>
+                Provider.RegisterDynamicProvider("DynamicProviderTest", true, referenceHub => [
+                    new("DynamicTest", (sender) =>
                     {
                         Logger.Info("Test via DynamicProviderTest");
                     })
-                }, null);
+                ]);
             })
-        };
+        ];
     }
 }

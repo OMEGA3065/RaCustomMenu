@@ -5,7 +5,7 @@ using NetworkManagerUtils.Dummies;
 
 namespace RaCustomMenu.Patchs;
 
-[HarmonyPatch(typeof(DummyActionCollector.CachedActions), MethodType.Constructor, new Type[]{typeof(ReferenceHub)})]
+[HarmonyPatch(typeof(DummyActionCollector.CachedActions), MethodType.Constructor, new Type[] { typeof(ReferenceHub) })]
 public static class PatchCachedAction
 {
     private static readonly AccessTools.FieldRef<DummyActionCollector.CachedActions, IRootDummyActionProvider[]> ProvidersFieldRef =
@@ -13,7 +13,7 @@ public static class PatchCachedAction
     [HarmonyPatch, HarmonyPostfix]
     public static void Postfix(DummyActionCollector.CachedActions __instance, ReferenceHub hub)
     {
-        if(!hub.IsDummy && !hub.IsHost)
+        if (!hub.IsHost && (!hub.IsDummy || RaCustomMenuPlugin.Instance.Config.CustomMenuOnDummies))
         {
             var newProviders = new List<IRootDummyActionProvider>
             {

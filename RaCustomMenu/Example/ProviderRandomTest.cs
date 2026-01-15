@@ -6,31 +6,31 @@ using RaCustomMenu.API;
 
 namespace RaCustomMenu.Example;
 
-public class ProviderRandomTest: Provider
+public class ProviderRandomTest : Provider
 {
     private int num = 0;
 
-    public override bool IsDirty { get;} = true;
+    public override bool IsDirty { get; } = true;
 
-    public override List<DummyAction> AddAction(ReferenceHub hub)
+    public override List<LimitedDummyAction> AddActions(ReferenceHub hub)
     {
-        return new List<DummyAction>()
-        {
-            new DummyAction("Test", () =>
+        return
+        [
+            new("Test", (sender) =>
             {
                 Logger.Info($"Test {hub.nicknameSync.DisplayName}");
             }),
-            new DummyAction($"Test {num}", () =>
+            new($"Test {num}", (sender) =>
             {
                 num++;
             }),
-            new DummyAction($"Test Add Target Loadout", () =>
+            new($"Test Add Target Loadout", (sender) =>
             {
                 var player = Player.Get(hub);
                 if (!ProviderLoadout.Instance.TargetPlayers.Contains(player))
                     ProviderLoadout.Instance.TargetPlayers.Add(player);
             })
-        };
+        ];
     }
 
     public override string CategoryName { get; } = "Test Module";
