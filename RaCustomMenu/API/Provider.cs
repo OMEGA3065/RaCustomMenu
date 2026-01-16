@@ -10,7 +10,6 @@ namespace RaCustomMenu.API;
 public abstract class Provider
 {
     public static readonly List<Provider> providersLoaded = new List<Provider>();
-    protected static List<Player> targetedPlayers = new();
 
     public abstract string CategoryName { get; }
 
@@ -163,6 +162,7 @@ public abstract class Provider
     }
 
     protected virtual void OnRegistered() { }
+    public virtual bool IsAllowedOnPlayer(ReferenceHub hub) => true;
 }
 
 public class DynamicProvider : Provider

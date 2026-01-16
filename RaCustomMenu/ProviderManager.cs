@@ -16,10 +16,7 @@ public class ProviderManager(ReferenceHub hub) : IRootDummyActionProvider
     {
         foreach (Provider provider in AllProviders)
         {
-            // List<Player> targets = provider.TargetPlayer();
-            // if (targets == null || targets.Contains(Player.Get(hub)))
-            // {
-            // }
+            if (!provider.IsAllowedOnPlayer(hub)) continue;
             categoryAdder(provider.CategoryName);
             DebugLogger.Log($"Provider Category name {provider.CategoryName} added");
 
