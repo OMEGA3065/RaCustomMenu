@@ -7,32 +7,18 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="..\..\References\Assembly-CSharp-Publicized.dll" />
-    <Reference Include="..\..\References\CommandSystem.Core.dll" />
-    <Reference Include="MEC">
-      <HintPath>..\..\References\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\References\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="Mirror">
-      <HintPath>..\..\References\Mirror.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Security">
-      <HintPath>..\..\References\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\References\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="Pooling">
-      <HintPath>..\..\References\Pooling.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\..\References\System.Net.Http.dll</HintPath>
-    </Reference>
+    <Reference Include="Assembly-CSharp" Publicize="true" Private="false" Pack="false" />
+    <Reference Include="CommandSystem.Core" />
+    <Reference Include="Assembly-CSharp-firstpass"/>
+    <Reference Include="UnityEngine.CoreModule"/>
+    <Reference Include="Mirror"/>
+    <Reference Include="Mono.Security"/>
+    <Reference Include="UnityEngine.PhysicsModule"/>
+    <Reference Include="Pooling"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Northwood.LabAPI" Version="1.1.4" />
     <PackageReference Include="Lib.Harmony" Version="2.2.2" />
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
   </ItemGroup>
 </Project>
