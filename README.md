@@ -1,34 +1,30 @@
-# RaCustomMenu
-[![Downloads](https://img.shields.io/github/downloads/Bankokwak/RaCustomMenu/total.svg)](https://github.com/Bankokwak/RaCustomMenu/releases/latest)
+# RA Custom Menu
+[![Downloads](https://img.shields.io/github/downloads/OMEGA3065/RaCustomMenu/total.svg)](https://github.com/OMEGA3065/RaCustomMenu/releases/latest)
 
-### Exiled Version
-This plugin works on [EXILED](https://gitlab.com/exmod-team/EXILED/-/tree/LabAPI?ref_type=heads) >= **9.6.0**.
-Download `RaCustomMenuExiled.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./EXILED/Plugins/`.
+### Installation Dependencies
+This plugin works on [LabApi](https://github.com/northwood-studios/LabAPI/releases/tag/1.1.4) >= **1.1.4**.
+Download `RaCustomMenu.dll` from the [latest](https://github.com/OMEGA3065/RaCustomMenu/releases/latest) release and put it in your plugins folder `./LabAPI/plugins/global(or {port})`.
+And you need to add `0Harmony.dll` into your `./LabAPI/dependencies/global(or {port})`.
 
-### LabApi Version
-This plugin works on [LabApi](https://github.com/northwood-studios/LabAPI/releases/tag/0.7.0) >= **0.7.0**.
-Download `RaCustomMenu.dll` in the [latest](https://github.com/Bankokwak/RaCustomMenu/releases/latest) release assets, then put it in your plugins folder `./LabAPI-Beta/plugins/global(or {port})`.
-And you need to add `0Harmony.dll` into your `./LabAPI-Beta/dependencies/global(or {port})`.
-
-# What is this plugin for ?
-RaCustomMenu allows you to add custom Categories and Actions to the Dummy Ra Category. You can (multi)select players and click a button to perform custom actions.
-Example: give a [loadout](https://github.com/Bankokwak/RaCustomMenu/blob/master/RaCustomMenu/RaCustomMenu/Example/ProviderLoadout.cs) or trigger another custom action.
+# Features
+RaCustomMenu allows you to add custom Categories and Actions (Buttons) to the Dummy RA Category. You can (multi)select players and click a button to perform custom actions.
+Example: give a [loadout](https://github.com/OMEGA3065/RaCustomMenu/blob/master/RaCustomMenu/RaCustomMenu/Example/ProviderLoadout.cs) or trigger another custom action.
 
 If you multiselect players, the action can be stacked if the action names are the same; otherwise, the action is performed only on the clicked player's button.
 
 ## Config
-In config file you can enable and disable the test button: See [here](https://github.com/Bankokwak/RaCustomMenu/blob/652f4ba746ee9f3c005b377b671de89fcf5e5277/RaCustomMenuExiled/Config.cs#L11C5-L11C6)
+### Example Toggle
+In config file you can enable and disable the example for this project: See [here](https://github.com/OMEGA3065/RaCustomMenu/blob/f5cbf6c148c4c47036a6d33b76e41385640581ce/RaCustomMenu/Config.cs#L11C1-L11C54).
+### Default Permission Requirement
+The default required permission to use any features of RA Custom Menu can also be set in the config. It can be left blank to allow anyone with RA access to run commands.
+This is the intended feature to allow developers to handle permission requirements in their own code. 
 
-## Permission
-You need to add `rcm.actions` to a RA role in your permissions.yml file, with that, the users can use the RA Custom Menu
+## For plugin developers
+You might want to look at the [wiki for the parent project](https://github.com/Bankokwak/RaCustomMenu/wiki).
+The only difference should be that this project's Providers use a LimitedDummyAction instead of the regular one.
+The LimitedDummyAction gives you access to the ICommandSender of whoever initiated the action.
 
-### For EXILED :
-`./EXILED/Config/permissions.yml`
+## Contributing
+If you find and a bug, and you can fix it, feel free to make a PR.
+You can also report bugs in the [GitHub Issues tab](https://github.com/OMEGA3065/RaCustomMenu/issues).
 
-### For LabApi
-`./LabAPI/configs/permissions.yml`.
-
-## For plugin creator
-A [wiki](https://github.com/Bankokwak/RaCustomMenu/wiki) has been setup here just for you.
-
-## if you see a bug, please report this [here](https://github.com/Bankokwak/RaCustomMenu/issues) or in my Discord dm ( bankokwak ).

@@ -14,6 +14,7 @@ public class ProviderManager(ReferenceHub hub) : IRootDummyActionProvider
 
     public void PopulateDummyActions(Action<DummyAction> actionAdder, Action<string> categoryAdder)
     {
+        DummyActionsDirty = false;
         foreach (Provider provider in AllProviders)
         {
             if (!provider.IsAllowedOnPlayer(hub)) continue;
@@ -27,7 +28,7 @@ public class ProviderManager(ReferenceHub hub) : IRootDummyActionProvider
                 actionAdder(dummyAction);
             }
 
-            DummyActionsDirty = provider.IsDirty;
+            DummyActionsDirty |= provider.IsDirty;
         }
     }
 
