@@ -13,7 +13,7 @@ public class RaCustomMenuPlugin : Plugin<Config>
     public override string Name { get; } = "RA Custom Menu";
     public override string Description { get; } = "A library which provides support for creating custom dummy actions on players.";
     public override string Author { get; } = "OMEGA3065; Bankokwak";
-    public override Version Version { get; } = new Version(0, 1, 0);
+    public override Version Version { get; } = new Version(1, 0, 0);
     public override Version RequiredApiVersion { get; } = new(LabApiProperties.CompiledVersion);
 
     private Harmony _harmony;
