@@ -20,7 +20,7 @@
     <None Include="..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Northwood.LabAPI" Version="1.1.4" />
+    <PackageReference Include="Northwood.LabAPI" Version="1.1.6.1" />
     <PackageReference Include="Lib.Harmony" Version="2.2.2" />
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
   </ItemGroup>

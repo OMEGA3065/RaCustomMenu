@@ -11,7 +11,6 @@ namespace RaCustomMenu;
 
 public class EventHandlers
 {
-    private static readonly FieldInfo CollectionCache = typeof(DummyActionCollector).GetField("CollectionCache", BindingFlags.NonPublic | BindingFlags.Static);
     public static void RegisterEvents()
     {
         PlayerEvents.Joined += OnVerified;
@@ -26,29 +25,12 @@ public class EventHandlers
     
     static void OnVerified(PlayerJoinedEventArgs ev)
     {
-        if (CollectionCache == null)
-        {
-            Logger.Error($"CollectionCache not found!\n Stacktrace: {new StackTrace()}");
-            return;
-        }
-        if (CollectionCache.GetValue(null) is Dictionary<ReferenceHub, DummyActionCollector.CachedActions> dict)
-        {
-            var newCache = new DummyActionCollector.CachedActions(ev.Player.ReferenceHub);
-            dict[ev.Player.ReferenceHub] = newCache;
-        }
+        var newCache = new DummyActionCollector.CachedActions(ev.Player.ReferenceHub);
+        DummyActionCollector.CollectionCache[ev.Player.ReferenceHub] = newCache;
     }
 
     static void OnLeft(PlayerLeftEventArgs ev)
     {
-        if (CollectionCache == null)
-        {
-            Logger.Error($"CollectionCache not found!\n Stacktrace: {new StackTrace()}");
-            return;
-        }
-        if (CollectionCache.GetValue(null) is Dictionary<ReferenceHub, DummyActionCollector.CachedActions> dict)
-        {
-            if (dict.ContainsKey(ev.Player.ReferenceHub))
-                dict.Remove(ev.Player.ReferenceHub);
-        }
+        DummyActionCollector.CollectionCache.Remove(ev.Player.ReferenceHub);
     }
 }
